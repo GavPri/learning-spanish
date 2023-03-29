@@ -35,8 +35,14 @@ def trans_english_to_spanish():
     """
     Function to translate user inout from English To Spanish. 
     """
-    translator = Translator()
-    phrase = input('Please enter the phrase that you would like to be translated: ')
+    while True:
+        translator = Translator()
+        phrase = input('Please enter the phrase that you would like to be translated: ')
+        if phrase.isdigit():
+            print('Please enter words and phrases, not digits!\n')
+            continue
+        else:
+            break
     translation = translator.translate(phrase, src='en', dest='es')
     print(f'\n {phrase} is being translated to Spanish...\n')
     print(f'"{phrase}" translates to "{translation.text}" in Spanish')
@@ -46,9 +52,16 @@ def trans_spanish_to_english():
     """
     Function to translate user input from Spanish to English.
     """
-    translator = Translator()
-    phrase = input('Please enter the phrase that you would like to be translated: ')
+    while True:
+        translator = Translator()
+        phrase = input('Please enter the phrase that you would like to be translated: ')
+        if phrase.isdigit():
+            print('Please enter words and phrases, not digits!\n')
+            continue
+        else:
+            break
     translation = translator.translate(phrase, src='es', dest='en')
     print(f'\n {phrase} is being translated to English..\n')
     print(f'"{phrase}" translates to "{translation.text}" in English')
 
+lang_choice()
