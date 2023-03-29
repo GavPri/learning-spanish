@@ -26,9 +26,11 @@ def lang_choice():
     if choice == "en":
         trans_english_to_spanish()
     elif choice == 'es':
-        trans_spanish_to_english()
+        trans_spanish_to_english()    
     else:
-        print('Oops, please choose "es" or "en"')
+        print('Oops, please choose "es" or "en"\n')
+        return lang_choice()
+        
 
 
 def trans_english_to_spanish():
@@ -45,7 +47,8 @@ def trans_english_to_spanish():
             break
     translation = translator.translate(phrase, src='en', dest='es')
     print(f'\n {phrase} is being translated to Spanish...\n')
-    print(f'"{phrase}" translates to "{translation.text}" in Spanish')
+    print(f'"{phrase}" translates to "{translation.text}" in Spanish\n')
+    return lang_choice()
 
 
 def trans_spanish_to_english():
@@ -62,6 +65,7 @@ def trans_spanish_to_english():
             break
     translation = translator.translate(phrase, src='es', dest='en')
     print(f'\n {phrase} is being translated to English..\n')
-    print(f'"{phrase}" translates to "{translation.text}" in English')
+    print(f'"{phrase}" translates to "{translation.text}" in English\n')
+    return lang_choice()
 
 lang_choice()
