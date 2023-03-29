@@ -21,6 +21,16 @@ en_es = SHEET.worksheet('english_to_spanish')
 en_es_data = en_es.get_all_values()
 
 
+def lang_choice():
+    choice = input('Please choose what language you would like to translate FROM ("es" or "en"):')
+    if choice == "en":
+        trans_english_to_spanish()
+    elif choice == 'es':
+        trans_spanish_to_english()
+    else:
+        print('Oops, please choose "es" or "en"')
+
+
 def trans_english_to_spanish():
     """
     Function to translate user inout from English To Spanish. 
@@ -42,5 +52,3 @@ def trans_spanish_to_english():
     print(f'\n {phrase} is being translated to English..\n')
     print(f'"{phrase}" translates to "{translation.text}" in English')
 
-
-trans_spanish_to_english()
