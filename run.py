@@ -1,4 +1,5 @@
 # python code goes here
+import googletrans
 from googletrans import Translator
 import gspread
 from google.oauth2.service_account import Credentials
