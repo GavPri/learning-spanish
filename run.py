@@ -32,4 +32,15 @@ def trans_english_to_spanish():
     print(f'"{phrase}" translates to "{translation.text}" in Spanish')
 
 
-trans_english_to_spanish()
+def trans_spanish_to_english():
+    """
+    Function to translate user input from Spanish to English.
+    """
+    translator = Translator()
+    phrase = input('Please enter the phrase that you would like to be translated: ')
+    translation = translator.translate(phrase, src='es', dest='en')
+    print(f'\n {phrase} is being translated to English..\n')
+    print(f'"{phrase}" translates to "{translation.text}" in English')
+
+
+trans_spanish_to_english()
