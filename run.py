@@ -1,4 +1,5 @@
 # python code goes here
+from googletrans import Translator
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -20,3 +21,5 @@ en_es_data = en_es.get_all_values()
 
 
 print(en_es_data)
+
+print(googletrans.LANGUAGES)
