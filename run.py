@@ -1,5 +1,5 @@
 # python code goes here
-import googletrans
+# H
 from googletrans import Translator
 import gspread
 from google.oauth2.service_account import Credentials
@@ -21,6 +21,15 @@ en_es = SHEET.worksheet('english_to_spanish')
 en_es_data = en_es.get_all_values()
 
 
-print(en_es_data)
+def trans_english_to_spanish():
+    """
+    Function to translate user inout from English To Spanish. 
+    """
+    translator = Translator()
+    phrase = input('Please enter the phrase that you would like to be translated: ')
+    translation = translator.translate(phrase, src='en', dest='es')
+    print(f'\n {phrase} is being translated to Spanish...\n')
+    print(f'"{phrase}" translates to "{translation.text}" in Spanish')
 
-print(googletrans.LANGUAGES)
+
+trans_english_to_spanish()
