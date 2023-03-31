@@ -23,7 +23,9 @@ en_es_data = en_es.get_all_values()
 
 
 def lang_choice():
-    choice = input('Please choose what language you would like to translate FROM ("es" or "en"):')
+    choice = input(
+        'Please choose what language you would like to translate FROM "es" or "en": '
+        )
     if choice == "en":
         worksheet = 'english_to_spanish'
         trans_english_to_spanish()
@@ -103,4 +105,17 @@ def update_worksheet(phrase, translation, worksheet):
     print('Worksheet has been updated!')
 
 
-lang_choice()
+def validate_user_phrase():
+    phrase = input(
+        'Please enter the phrase that you would lke to be translated: '
+        )
+    if phrase.isdigit():
+        print('Oops, please only enter words and phrases, not digits!')
+        return lang_choice()
+    else:
+        return phrase
+
+
+
+# lang_choice()
+validate_user_phrase()
