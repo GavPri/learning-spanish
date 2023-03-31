@@ -25,8 +25,10 @@ en_es_data = en_es.get_all_values()
 def lang_choice():
     choice = input('Please choose what language you would like to translate FROM ("es" or "en"):')
     if choice == "en":
+        worksheet = 'english_to_spanish'
         trans_english_to_spanish()
     elif choice == 'es':
+        worksheet = 'spanish_to_english'
         trans_spanish_to_english()    
     else:
         print('Oops, please choose "es" or "en"\n')
@@ -58,7 +60,8 @@ def trans_english_to_spanish():
         translation = translator.translate(phrase, src='en', dest='es')
         print(f' {phrase} is being translated to Spanish...\n')
         print(f'"{phrase}" translates to "{translation.text}" in Spanish\n')
-        update_worksheet_en(phrase, translation)
+        worksheet = 'english_to_spanish'
+        update_worksheet(phrase, translation, worksheet)
         return lang_choice()
 
 
@@ -88,30 +91,16 @@ def trans_spanish_to_english():
         translation = translator.translate(phrase, src='es', dest='en')
         print(f'\n {phrase} is being translated to English..\n')
         print(f'"{phrase}" translates to "{translation.text}" in English\n')
-        update_worksheet_es(phrase, translation)
+        worksheet = 'spanish_to_english'
+        update_worksheet(phrase, translation, worksheet)
         return lang_choice()
 
 
-def update_worksheet_en(phrase, translation):
-    """
-    Function to update the "english_to_spanish" 
-    worksheet with the input phrase and its translation.
-    """
-    print('Updating phrase worksheet...\n')
-    en_worksheet = SHEET.worksheet('english_to_spanish')
-    en_worksheet.append_row([phrase, translation.text])
-    print('New phrase added to worksheet!')
-
-
-def update_worksheet_es(phrase, translation):
-    """
-    Function to update the "english_to_spanish" worksheet with the input
-    phrase and its translation.
-    """
-    print('Updating phrase worksheet...\n')
-    es_worksheet = SHEET.worksheet('spanish_to_english')
-    es_worksheet.append_row([phrase, translation.text])
-    print('New phrase added to worksheet!\n')
+def update_worksheet(phrase, translation, worksheet):
+    print('Updating worksheet')
+    worksheet = SHEET.worksheet(worksheet)
+    worksheet.append_row([phrase, translation.text])
+    print('Worksheet has been updated!')
 
 
 lang_choice()
