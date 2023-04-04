@@ -88,4 +88,16 @@ def leave_translation():
         return leave_translation()
 
 
+def learn_spanish_saying():
+    cool_phrase = SHEET.worksheet('cool_phrase')
+    cool_phrase_data = cool_phrase.get_all_values()
+    random_saying = random.choice(cool_phrase_data)
+    spanish_phrase = random_saying[0]
+    english_translation = random_saying[1]
+    print(f'{spanish_phrase} - {english_translation}')
+
+
+learn_spanish_saying()
+
+
 lang_choice_beta()
