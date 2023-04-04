@@ -24,8 +24,8 @@ en_es_data = en_es.get_all_values()
 
 def lang_choice_beta():
     pick = input(
-        'Please choose which language you would like to translate from es or en: '
-    )
+        'Choose which language you would like to translate from es or en: '
+        )
     if pick == 'en':
         translate_phrase('en', 'es')
     elif pick == 'es':
@@ -38,7 +38,9 @@ def lang_choice_beta():
 def translate_phrase(src_lang, dest_lang):
     while True:
         translator = Translator()
-        phrase = input('Please enter the phrase you would like to have translated: ')
+        phrase = input(
+            'Please enter the phrase you would like to have translated: '
+            )
 
         if phrase.isdigit():
             print('Please only enter words and phrases, not digits!')
@@ -49,9 +51,11 @@ def translate_phrase(src_lang, dest_lang):
     language = translator.detect(phrase).lang
 
     if language != src_lang:
-            print(f'Oops! {src_lang} was not detected, please try again.')
+        print(f'Oops! {src_lang} was not detected, please try again.')
     else:
-        translation = translator.translate(phrase, src=src_lang, dest=dest_lang)
+        translation = translator.translate(
+            phrase, src=src_lang, dest=dest_lang
+            )
         print(f'\n {phrase} is being translated to {dest_lang}..\n')
         print(f'"{phrase}" translates to "{translation.text}" in {dest_lang}\n')
         worksheet_name = f'{src_lang}_to_{dest_lang}'
