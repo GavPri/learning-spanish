@@ -66,6 +66,7 @@ def translate_phrase(src_lang, dest_lang):
 
     if language != src_lang:
         print(f'Oops! {src_lang} was not detected, please try again.')
+        translate_phrase(src_lang, dest_lang)
     else:
         translation = translator.translate(
             phrase, src=src_lang, dest=dest_lang
@@ -88,9 +89,11 @@ def update_worksheet(phrase, translation, worksheet_name):
 
 
 def leave_translation():
+
     leave_option = input(
         'Is there another phrase you would like to translate? "yes" or "no": '
         )
+
     if leave_option == "no":
         print('Thank you, goodbye!')
         exit()
@@ -104,7 +107,7 @@ def leave_translation():
 def learn_spanish_saying():
     cool_phrase = SHEET.worksheet('cool_phrase')
     save_location = SHEET.worksheet('es_to_en')
-    cool_phrase_data = cool_phrase.get_all_values()
+    cool_phrase_data = cool_phrase.get_all_values()[1:]
     random_saying = random.choice(cool_phrase_data)
     spanish_phrase = random_saying[0]
     english_translation = random_saying[1]
@@ -116,6 +119,7 @@ def learn_spanish_saying():
     save_phrase = input(
         'Would you like to save this phrase to your worksheet? yes or no? '
         )
+        
     if save_phrase == 'yes':
         print('Updating Spanish to English worksheet...\n')
         save_location.append_row([spanish_phrase, english_translation])
