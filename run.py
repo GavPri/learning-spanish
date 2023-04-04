@@ -24,6 +24,12 @@ en_es_data = en_es.get_all_values()
 
 
 def student_choice():
+    """
+    This function asks the user whether they want to translate a phrase or learn a new random phrase. 
+    If they choose to translate a phrase, it calls the lang_choice_beta function. 
+    If they choose to learn a new random phrase, it calls the learn_spanish_saying function. 
+    If they enter an invalid option, it prompts them to enter a valid option.
+    """
     trans_or_learn = input(
         'Press 1 to translate a phrase, press 2 to learn a new random phrase.'
         )
@@ -147,5 +153,5 @@ def new_phrase_reset():
         print('Oops, please enter yes or no')
         new_phrase_reset()
 
-        
+
 student_choice()
