@@ -1,6 +1,6 @@
 # python code goes here
 # import pyttsx3
-import googletrans
+# import googletrans
 from googletrans import Translator
 import gspread
 from google.oauth2.service_account import Credentials
@@ -57,16 +57,19 @@ def translate_phrase(src_lang, dest_lang):
             phrase, src=src_lang, dest=dest_lang
             )
         print(f'\n {phrase} is being translated to {dest_lang}..\n')
-        print(f'"{phrase}" translates to "{translation.text}" in {dest_lang}\n')
+        print(
+            f'"{phrase}" translates to "{translation.text}" in {dest_lang}\n'
+            )
         worksheet_name = f'{src_lang}_to_{dest_lang}'
-        update_worksheet(phrase, translation, worksheet_name, src_lang, dest_lang)
+        update_worksheet(phrase, translation, worksheet_name)
         lang_choice_beta()
 
 
-def update_worksheet(phrase, translation, worksheet_name, src_lang, dest_lang):
+def update_worksheet(phrase, translation, worksheet_name):
     print('Updating worksheet')
     worksheet = SHEET.worksheet(worksheet_name)
     worksheet.append_row([phrase, translation.text])
     print('Worksheet has been updated!')
+
 
 lang_choice_beta()
