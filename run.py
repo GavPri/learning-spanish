@@ -22,19 +22,32 @@ en_es = SHEET.worksheet('en_to_es')
 en_es_data = en_es.get_all_values()
 
 
-def lang_choice():
-    choice = input(
-        'Please choose what language you would like to translate FROM "es" or "en": '
-        )
-    if choice == "en":
-        worksheet = 'en_to_es'
-        trans_english_to_spanish()
-    elif choice == 'es':
-        worksheet = 'es_to_en'
-        trans_spanish_to_english()    
+# def lang_choice():
+#     choice = input(
+#         'Please choose what language you would like to translate FROM "es" or "en": '
+#         )
+#     if choice == "en":
+#         worksheet = 'en_to_es'
+#         trans_english_to_spanish()
+#     elif choice == 'es':
+#         worksheet = 'es_to_en'
+#         trans_spanish_to_english()    
+#     else:
+#         print('Oops, please choose "es" or "en"\n')
+#         return lang_choice()    
+
+
+def lang_choice_beta():
+    pick = input(
+        'Please choose which language you would like to translate from es or en: '
+    )
+    if pick == 'en':
+        translate_phrase('en', 'es')
+    elif pick == 'es':
+        translate_phrase('es', 'en')
     else:
-        print('Oops, please choose "es" or "en"\n')
-        return lang_choice()    
+        print('Oops, please enter "en" for English or "es" for Spanish')
+        return lang_choice_beta()
 
 
 def trans_english_to_spanish():
