@@ -1,6 +1,7 @@
 # python code goes here
 # import pyttsx3
 # import googletrans
+import random
 from googletrans import Translator
 import gspread
 from google.oauth2.service_account import Credentials
@@ -70,6 +71,20 @@ def update_worksheet(phrase, translation, worksheet_name):
     worksheet = SHEET.worksheet(worksheet_name)
     worksheet.append_row([phrase, translation.text])
     print('Worksheet has been updated!')
+    return leave_translation()
+
+def leave_translation():
+    leave_option = input(
+        'Is there another phrase you would like to translate? "yes" or "no": '
+        )
+    if leave_option == "no":
+        print('Thank you, goodbye!')
+        exit()
+    elif leave_option == "yes":
+        lang_choice_beta()
+    else:
+        print('Oops, please choose yes or no')
+        return leave_translation()
 
 
 lang_choice_beta()
