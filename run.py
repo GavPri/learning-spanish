@@ -23,6 +23,19 @@ en_es = SHEET.worksheet('en_to_es')
 en_es_data = en_es.get_all_values()
 
 
+def student_choice():
+    trans_or_learn = input(
+        'Press 1 to translate a phrase, press 2 to learn a new random phrase.'
+        )
+    if trans_or_learn == '1':
+        lang_choice_beta()
+    elif trans_or_learn == '2':
+        learn_spanish_saying()
+    else:
+        print('Oops, please enter 1 or 2.')
+        student_choice()
+
+
 def lang_choice_beta():
     pick = input(
         'Choose which language you would like to translate from es or en: '
@@ -90,18 +103,20 @@ def leave_translation():
 
 def learn_spanish_saying():
     cool_phrase = SHEET.worksheet('cool_phrase')
+    save_location = SHEET.worksheet('es_to_en')
     cool_phrase_data = cool_phrase.get_all_values()
     random_saying = random.choice(cool_phrase_data)
     spanish_phrase = random_saying[0]
     english_translation = random_saying[1]
-    print(f' The new phrase of the day is: {spanish_phrase} - {english_translation}')
+    print('Generating new phrase...\n')
+    print(f' The new phrase of the day is: {spanish_phrase} - {english_translation}\n')
 
     save_phrase = input(
-        'Would you like to save this phrase to your worksheet? yes or no?'
+        'Would you like to save this phrase to your worksheet? yes or no? '
         )
     if save_phrase == 'yes':
-        print('Updating Spanish to English worksheet...')
-        cool_phrase.append_row([spanish_phrase, english_translation])
+        print('Updating Spanish to English worksheet...\n')
+        save_location.append_row([spanish_phrase, english_translation])
         print('Worksheet has been updated!')
     elif save_phrase == 'no':
         print('New phrase NOT added to worksheet.')
@@ -109,8 +124,7 @@ def learn_spanish_saying():
         print('Oops, please enter "yes" or "no"')
 
 
-
-learn_spanish_saying()
-
+# learn_spanish_saying()
+student_choice()
 
 # lang_choice_beta()
