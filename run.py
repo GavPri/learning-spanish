@@ -73,6 +73,7 @@ def update_worksheet(phrase, translation, worksheet_name):
     print('Worksheet has been updated!')
     return leave_translation()
 
+
 def leave_translation():
     leave_option = input(
         'Is there another phrase you would like to translate? "yes" or "no": '
