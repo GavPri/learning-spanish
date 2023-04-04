@@ -134,4 +134,18 @@ def learn_spanish_saying():
     save_phrases()
 
 
+def new_phrase_reset():
+    reset = input(
+            'Continue learning? yes or no?\n'
+        )
+    if reset == 'yes':
+        student_choice()
+    elif reset == 'no':
+        print("Thank you, see you soon!")
+        exit()
+    else:
+        print('Oops, please enter yes or no')
+        new_phrase_reset()
+
+        
 student_choice()
