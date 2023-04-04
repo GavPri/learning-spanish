@@ -1,7 +1,7 @@
 # Love Spanish 
 Love Spanish is a project that translates a phrase from English to Spanish and Vice Versa using the Google translate API. When the phrase is translated, the phrase inputted and the translation provided are added to a google sheet for storage using the gspread. 
 
-I built this prpject as I always enjoyed learning Spanish and I wanted a program to translate and save the new phrases that I have learned. 
+I built this prpject as I always enjoyed learning Spanish. I currently work with a lot of Spanish speaking people. I made this as a place to keep the new phrases that I learn.  
 
 ## Dependencies 
 In order to make this project, I relied upon some libraries and modules. 
@@ -51,3 +51,25 @@ If I chose to translate from Spanish to English, It would update the es_to_en sp
     - After both of these outputs you are asked if you would like to continue learning. 
     - Entering 'yes' to this will return you to student_choice() function. 
     - Entering 'no' here will lead to the exiting the program. 
+
+## Testing 
+I have tested the code in this project by:
+    Passing the code into the PEP8 linter and this detected no issues in the code 
+    I tested all input ares to test how they handle in valid inputs such as:
+        - entering symbols, integers, blank spaces and various other characters when strings are required. 
+    These tests took place in my local terminal. 
+
+## Bugs 
+With some one one entries, the detect function will not detect the language you wish to translate from. 
+    - For example, entering the word 'cunning' to be translated from english to spanish will not work. 
+    - To fix this, more context is needed in the sentence you provide, for example: 
+        'Cunning as a fox' will return a translation containing the translation for 'cunning'. 
+To fix this bug, I entered a try except block to catch TypeErrors. 
+
+## Remaining Bugs 
+- No remianing bugs. 
+
+## Validator Testing
+- PEP8:
+    Running my code in the PEP8 validator returned no errors. 
+

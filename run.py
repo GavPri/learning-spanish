@@ -1,6 +1,4 @@
 # python code goes here
-# import pyttsx3
-# import googletrans
 import random
 from googletrans import Translator
 import gspread
@@ -32,7 +30,7 @@ def student_choice():
     it prompts them to enter a valid option.
     """
     trans_or_learn = input(
-        'Press 1 to translate a phrase, press 2 to learn a new random phrase.'
+        'Press 1 to translate a phrase, press 2 to learn a new random phrase.\n'
         )
     if trans_or_learn == '1':
         lang_choice_beta()
@@ -52,7 +50,7 @@ def lang_choice_beta():
     it calls the translate_phrase function.
     """
     pick = input(
-        'Choose which language you would like to translate from es or en: '
+        'Choose which language you would like to translate from es or en: \n'
         )
     if pick == 'en':
         translate_phrase('en', 'es')
@@ -74,7 +72,7 @@ def translate_phrase(src_lang, dest_lang):
     while True:
         translator = Translator()
         phrase = input(
-            'Please enter the phrase you would like to have translated: '
+            'Please enter the phrase you would like to have translated: \n'
             )
 
         if phrase.isdigit():
@@ -82,7 +80,7 @@ def translate_phrase(src_lang, dest_lang):
             continue
         else:
             break
-    
+
     try:
         language = translator.detect(phrase).lang
     except TypeError:
@@ -94,7 +92,9 @@ def translate_phrase(src_lang, dest_lang):
         translate_phrase(src_lang, dest_lang)
     else:
         try:
-            translation = translator.translate(phrase, src=src_lang, dest=dest_lang)
+            translation = translator.translate(
+                phrase, src=src_lang, dest=dest_lang
+                )
         except TypeError:
             print('Oops, please add more context!')
             return translate_phrase(src_lang, dest_lang)
@@ -123,7 +123,7 @@ def leave_translation():
     leave_translation function.
     """
     leave_option = input(
-        'Is there another phrase you would like to translate? "yes" or "no": '
+        'Is there another phrase you would like to translate? "yes" or "no": \n'
         )
 
     if leave_option == "no":
@@ -166,7 +166,7 @@ def learn_spanish_saying():
 
     def save_phrases():
         storage = input(
-            'Would you like to save this phrase to your worksheet? yes or no? '
+            'Would you like to save this phrase to your worksheet? yes or no? \n'
             )
 
         if storage == 'yes':
