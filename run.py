@@ -115,22 +115,23 @@ def learn_spanish_saying():
     print(
         f'Phrase of the day is: {spanish_phrase} - {english_translation}\n'
         )
+    
+    def save_phrases():
+        storage = input(
+            'Would you like to save this phrase to your worksheet? yes or no? '
+            )
+        if storage == 'yes':
+            print('Updating Spanish to English worksheet...\n')
+            save_location.append_row([spanish_phrase, english_translation])
+            print('Worksheet has been updated!')
+            new_phrase_reset()
+        elif storage == 'no':
+            print('New phrase NOT added to worksheet.')
+            new_phrase_reset()
+        else:
+            print('Oops, please enter "yes" or "no"')
+            save_phrases()
+    save_phrases()
 
-    save_phrase = input(
-        'Would you like to save this phrase to your worksheet? yes or no? '
-        )
-        
-    if save_phrase == 'yes':
-        print('Updating Spanish to English worksheet...\n')
-        save_location.append_row([spanish_phrase, english_translation])
-        print('Worksheet has been updated!')
-    elif save_phrase == 'no':
-        print('New phrase NOT added to worksheet.')
-    else:
-        print('Oops, please enter "yes" or "no"')
 
-
-# learn_spanish_saying()
 student_choice()
-
-# lang_choice_beta()
