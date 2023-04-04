@@ -43,6 +43,11 @@ def student_choice():
 
 
 def lang_choice_beta():
+    """
+    This function prompts the user to choose which language they would like to translate from, 
+    either "en" for English or "es" for Spanish. If the user enters an invalid option, it prompts them to 
+    enter a valid option. If the user enters a valid option, it calls the translate_phrase function.
+    """
     pick = input(
         'Choose which language you would like to translate from es or en: '
         )
