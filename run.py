@@ -94,10 +94,23 @@ def learn_spanish_saying():
     random_saying = random.choice(cool_phrase_data)
     spanish_phrase = random_saying[0]
     english_translation = random_saying[1]
-    print(f'{spanish_phrase} - {english_translation}')
+    print(f' The new phrase of the day is: {spanish_phrase} - {english_translation}')
+
+    save_phrase = input(
+        'Would you like to save this phrase to your worksheet? yes or no?'
+        )
+    if save_phrase == 'yes':
+        print('Updating Spanish to English worksheet...')
+        cool_phrase.append_row([spanish_phrase, english_translation])
+        print('Worksheet has been updated!')
+    elif save_phrase == 'no':
+        print('New phrase NOT added to worksheet.')
+    else:
+        print('Oops, please enter "yes" or "no"')
+
 
 
 learn_spanish_saying()
 
 
-lang_choice_beta()
+# lang_choice_beta()
