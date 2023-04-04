@@ -135,11 +135,16 @@ def translate_phrase(src_lang, dest_lang):
         lang_choice_beta()
 
 
-def update_worksheet(phrase, translation, worksheet):
+# def update_worksheet(phrase, translation, worksheet):
+#     print('Updating worksheet')
+#     worksheet = SHEET.worksheet(f'{src_lang}_to_{dest_lang}')
+#     worksheet.append_row([phrase, translation.text])
+#     print('Worksheet has been updated!')
+
+def update_worksheet(phrase, translation, worksheet_name, src_lang, dest_lang):
     print('Updating worksheet')
-    worksheet = SHEET.worksheet(f'{src_lang}_to_{dest_lang}')
+    worksheet = SHEET.worksheet(worksheet_name)
     worksheet.append_row([phrase, translation.text])
     print('Worksheet has been updated!')
-
 
 lang_choice()
