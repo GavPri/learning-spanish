@@ -109,7 +109,9 @@ def learn_spanish_saying():
     spanish_phrase = random_saying[0]
     english_translation = random_saying[1]
     print('Generating new phrase...\n')
-    print(f' The new phrase of the day is: {spanish_phrase} - {english_translation}\n')
+    print(
+        f'Phrase of the day is: {spanish_phrase} - {english_translation}\n'
+        )
 
     save_phrase = input(
         'Would you like to save this phrase to your worksheet? yes or no? '
