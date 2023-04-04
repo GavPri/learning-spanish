@@ -18,7 +18,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('new_phrases')
 
 
-en_es = SHEET.worksheet('english_to_spanish')
+en_es = SHEET.worksheet('en_to_es')
 en_es_data = en_es.get_all_values()
 
 
@@ -27,10 +27,10 @@ def lang_choice():
         'Please choose what language you would like to translate FROM "es" or "en": '
         )
     if choice == "en":
-        worksheet = 'english_to_spanish'
+        worksheet = 'en_to_es'
         trans_english_to_spanish()
     elif choice == 'es':
-        worksheet = 'spanish_to_english'
+        worksheet = 'es_to_en'
         trans_spanish_to_english()    
     else:
         print('Oops, please choose "es" or "en"\n')
@@ -100,22 +100,9 @@ def trans_spanish_to_english():
 
 def update_worksheet(phrase, translation, worksheet):
     print('Updating worksheet')
-    worksheet = SHEET.worksheet(worksheet)
+    worksheet = SHEET.worksheet(f'{src_lang}_to_{dest_lang}')
     worksheet.append_row([phrase, translation.text])
     print('Worksheet has been updated!')
 
 
-def validate_user_phrase():
-    phrase = input(
-        'Please enter the phrase that you would lke to be translated: '
-        )
-    if phrase.isdigit():
-        print('Oops, please only enter words and phrases, not digits!')
-        return lang_choice()
-    else:
-        return phrase
-
-
-
-# lang_choice()
-validate_user_phrase()
+lang_choice()
