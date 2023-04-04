@@ -82,23 +82,28 @@ def translate_phrase(src_lang, dest_lang):
             continue
         else:
             break
+    
+    try:
+        language = translator.detect(phrase).lang
+    except TypeError:
+        print('Oops, please add more context!')
+        return translate_phrase(src_lang, dest_lang)
 
-    language = translator.detect(phrase).lang
-
-    if language != src_lang:
+    if language is None or language != src_lang:
         print(f'Oops! {src_lang} was not detected, please try again.')
         translate_phrase(src_lang, dest_lang)
     else:
-        translation = translator.translate(
-            phrase, src=src_lang, dest=dest_lang
-            )
-        print(f'\n {phrase} is being translated to {dest_lang}..\n')
+        try:
+            translation = translator.translate(phrase, src=src_lang, dest=dest_lang)
+        except TypeError:
+            print('Oops, please add more context!')
+            return translate_phrase(src_lang, dest_lang)
+        print(f'{phrase} is being translated to {dest_lang}..\n')
         print(
             f'"{phrase}" translates to "{translation.text}" in {dest_lang}\n'
             )
         worksheet_name = f'{src_lang}_to_{dest_lang}'
         update_worksheet(phrase, translation, worksheet_name)
-        lang_choice_beta()
 
 
 def update_worksheet(phrase, translation, worksheet_name):
@@ -163,6 +168,7 @@ def learn_spanish_saying():
         storage = input(
             'Would you like to save this phrase to your worksheet? yes or no? '
             )
+
         if storage == 'yes':
             print('Updating Spanish to English worksheet...\n')
             save_location.append_row([spanish_phrase, english_translation])
@@ -174,19 +180,23 @@ def learn_spanish_saying():
         else:
             print('Oops, please enter "yes" or "no"')
             save_phrases()
+
     save_phrases()
 
 
 def new_phrase_reset():
-    """Ask the user if they want to save the current phrase to their worksheet.
-
-    Prompts the user to enter "yes" or "no" to indicate whether they want to save
-    the current phrase to their worksheet or not, respectively. If the user
-    enters an invalid input, the function prompts the user to re-enter their
-    choice."""
+    """
+    Ask the user if they want to save the current phrase to their worksheet.
+    Prompts the user to enter "yes" or "no" to indicate whether they want to
+    save the current phrase to their worksheet or not,
+    respectively. If the user enters an invalid input,
+    the function prompts the user to re-enter their
+    choice.
+    """
     reset = input(
             'Continue learning? yes or no?\n'
         )
+
     if reset == 'yes':
         student_choice()
     elif reset == 'no':
