@@ -39,6 +39,7 @@ with this project, I created three spreadsheets in Google sheets.
 If I chose to translate from Spanish to English, It would update the es_to_en spreadsheet. 
 - Once the spreadsheet is updated, you have the option to continue learning, inputting 'yes' will bring you back to the lang_choice function. 
 - If you enter 'no' the program ends. 
+![translation-process](/assets/images/translation-function.png)
 
 ### Choosing to learn a new phrase. 
 - If you choose to learn a new phrase by inputting 2 at the first prompt:
@@ -58,6 +59,7 @@ I have tested the code in this project by:
     I tested all input ares to test how they handle in valid inputs such as:
         - entering symbols, integers, blank spaces and various other characters when strings are required. 
     These tests took place in my local terminal. 
+![input handling](/assets/images/input-handling.png)
 
 ## Bugs 
 With some one one entries, the detect function will not detect the language you wish to translate from. 
@@ -73,3 +75,16 @@ To fix this bug, I entered a try except block to catch TypeErrors.
 - PEP8:
     Running my code in the PEP8 validator returned no errors. 
 
+## Deployment
+
+This app was deployed on Heroku. 
+    Steps for deployment:
+    Create a new app from the Heroku dashboard.
+    Named the app and select the region, then click "Create app".
+    Set up my app settings, including config vars to store sensitive data.
+    Add buildpacks to install further dependencies outside of the requirements.txt file.
+    Choose manual deployment method.
+    Connected Heroku app to my GitHub repository code.
+    Choose to manually or automatically deploy the app.
+    Wait for the app to build and check the logs for any errors.
+    Tested program to see if it works properly.  
