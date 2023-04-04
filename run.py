@@ -25,10 +25,11 @@ en_es_data = en_es.get_all_values()
 
 def student_choice():
     """
-    This function asks the user whether they want to translate a phrase or learn a new random phrase. 
-    If they choose to translate a phrase, it calls the lang_choice_beta function. 
-    If they choose to learn a new random phrase, it calls the learn_spanish_saying function. 
-    If they enter an invalid option, it prompts them to enter a valid option.
+    This function asks the user whether they want to translate a phrase or
+    learn a new random phrase. If they choose to translate a phrase, it calls
+    the lang_choice_beta function. If they choose to learn a new random phrase,
+    it calls thelearn_spanish_saying function. If they enter an invalid option,
+    it prompts them to enter a valid option.
     """
     trans_or_learn = input(
         'Press 1 to translate a phrase, press 2 to learn a new random phrase.'
@@ -44,9 +45,11 @@ def student_choice():
 
 def lang_choice_beta():
     """
-    This function prompts the user to choose which language they would like to translate from, 
-    either "en" for English or "es" for Spanish. If the user enters an invalid option, it prompts them to 
-    enter a valid option. If the user enters a valid option, it calls the translate_phrase function.
+    This function prompts the user to choose which language they would like to
+    translate from, either "en" for English or "es" for Spanish.
+    If the user enters an invalid option, it prompts them to
+    enter a valid option. If the user enters a valid option,
+    it calls the translate_phrase function.
     """
     pick = input(
         'Choose which language you would like to translate from es or en: '
@@ -61,6 +64,13 @@ def lang_choice_beta():
 
 
 def translate_phrase(src_lang, dest_lang):
+    """ This function prompts user to enter a phrase for translation.
+    If phrase contains digits, user is prompted to only enter words or phrases.
+    If entered phrase language is not the selected source language, user is
+    prompted to enter a valid phrase.If entered phrase language is
+    source language,it translates phrase to destination language,
+    prints translation and calls update_worksheet() to
+     update worksheet."""
     while True:
         translator = Translator()
         phrase = input(
@@ -100,7 +110,13 @@ def update_worksheet(phrase, translation, worksheet_name):
 
 
 def leave_translation():
-
+    """
+    This function gives the user the option to leave the program,
+    if they choose yes, the function will return them to lang_choice.
+    If they choose no, it will say goodbye and exit the program.
+    if the entry is invalid, it will return to the beginning of the
+    leave_translation function.
+    """
     leave_option = input(
         'Is there another phrase you would like to translate? "yes" or "no": '
         )
@@ -116,6 +132,22 @@ def leave_translation():
 
 
 def learn_spanish_saying():
+    """
+    This function generates a random Spanish phrase and its English
+    translation from the "cool_phrase" worksheet.
+    It prompts the user to indicate whether they would like to
+    save the phrase and its translation to the
+    "es_to_en" worksheet.
+    If the user indicates that they would like to save the phrase and its
+    translation,
+    it updates the "es_to_en" worksheet with the phrase and its translation
+    and calls the new_phrase_reset
+    function. If the user indicates that they do not want to save the phrase
+    and its translation, it calls the new_phrase_reset function.
+    If the user enters an invalid option, it prompts the user to enter
+    a valid option and calls itself.
+    """
+
     cool_phrase = SHEET.worksheet('cool_phrase')
     save_location = SHEET.worksheet('es_to_en')
     cool_phrase_data = cool_phrase.get_all_values()[1:]
@@ -126,7 +158,7 @@ def learn_spanish_saying():
     print(
         f'Phrase of the day is: {spanish_phrase} - {english_translation}\n'
         )
-    
+
     def save_phrases():
         storage = input(
             'Would you like to save this phrase to your worksheet? yes or no? '
@@ -146,6 +178,12 @@ def learn_spanish_saying():
 
 
 def new_phrase_reset():
+    """Ask the user if they want to save the current phrase to their worksheet.
+
+    Prompts the user to enter "yes" or "no" to indicate whether they want to save
+    the current phrase to their worksheet or not, respectively. If the user
+    enters an invalid input, the function prompts the user to re-enter their
+    choice."""
     reset = input(
             'Continue learning? yes or no?\n'
         )
